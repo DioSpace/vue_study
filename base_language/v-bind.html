@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind指令</title>
+    <style>
+        .active {
+            border: 5px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <img v-bind:src="imgSrc" alt="">
+        <br>
+        <img :src="imgSrc" alt="" :title="imgTitle + '!!!'" :class="isActive ? 'active' : ''" @click="toggleActive">
+        <img :src="imgSrc" alt="" :title="imgTitle + '!!!'" :class="{active:isActive}" @click="toggleActive">
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                imgSrc: "https://upload-images.jianshu.io/upload_images/3298299-4af3e24824e33818.jpg",
+                imgTitle: "平头哥",
+                isActive: false
+            },
+            methods: {
+                toggleActive: function () {
+                    this.isActive = !this.isActive
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

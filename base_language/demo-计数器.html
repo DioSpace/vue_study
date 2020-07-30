@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="input-num">
+            <button @click="sub">
+                -
+            </button>
+            <span>{{num}}</span>
+            <button @click="add">
+                +
+            </button>
+        </div>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function () {
+                    if (this.num >= 10) {
+                        alert("最大为10")
+                    } else {
+                        this.num++;
+                    }
+                },
+                sub: function () {
+                    if (this.num <= 0) {
+                        alert("最小为0")
+                    } else {
+                        this.num--;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

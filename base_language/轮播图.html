@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+</head>
+
+<body>
+    <div id="app">
+        <a href="javascript:void(0)" v-show="index != 0" class="left" @click="prev">
+            <img src="https://upload-images.jianshu.io/upload_images/3298299-717700a88bf8f60c.png" alt="" />
+        </a>
+        <img :src="imgArr[index]" alt="">
+        <a href="javascript:void(0)" v-show="index < imgArr.length - 1" class="right" @click="next">
+            <img src="https://upload-images.jianshu.io/upload_images/3298299-7f03621612a1fa52.png" alt="" />
+        </a>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                imgArr: [
+                    "https://upload-images.jianshu.io/upload_images/3298299-88272d3219c39767.jpg",
+                    "https://upload-images.jianshu.io/upload_images/3298299-654ab35b5d1b6d9c.jpeg",
+                    "https://upload-images.jianshu.io/upload_images/3298299-25193950ae21a293.jpeg",
+                    "https://upload-images.jianshu.io/upload_images/3298299-40860596c769b182.jpg"
+                ],
+                index: 0
+            },
+            methods: {
+                prev: function () {
+                    this.index--;
+                },
+                next: function () {
+                    this.index++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-router 3.0.1讲解</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <h3>vue-router 的使用</h3>
+    <div id="app">
+        <!-- router-link默认生成<a>标签 to生成href属性 -->
+        <router-link to="/user">User</router-link>
+        <router-link to="/register">Register</router-link>
+        <!-- 路由对应的 View 在这里显示 -->
+        <router-view style="margin-top: 10px;">
+
+        </router-view>
+    </div>
+    <script>
+        const User = {
+            template: '<h1>User 组件</h1>'
+        }
+        const Register = {
+            template: '<h1>Register 组件</h1>'
+        }
+        //声明路由规则
+        const routes = [
+            {
+                //路由重定向
+                path: '/', redirect: '/user'
+            },
+            {
+                path: '/user', component: User
+            },
+            {
+                path: '/register', component: Register
+            }
+        ]
+        //创建 router 实例
+        const router = new VueRouter({
+            routes //就相当于是 routes:routes
+        })
+        var vm = new Vue({
+            //指定控制的区域
+            el: '#app',
+            router: router
+        })
+    </script>
+
+</body>
+
+</html>

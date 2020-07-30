@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="切换状态" @click="changeIsShow">
+        <!-- v-show改变的是display -->
+        <img v-show="isShow" src="https://upload-images.jianshu.io/upload_images/3298299-4af3e24824e33818.jpg">
+        <!-- v-if改变的是dom树 -->
+        <img v-if="isShow" src="https://upload-images.jianshu.io/upload_images/3298299-4af3e24824e33818.jpg">
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: false
+            },
+            methods: {
+                changeIsShow: function () {
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

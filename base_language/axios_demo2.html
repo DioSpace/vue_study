@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios_demo2</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="显示内容...." @click="getJoke">
+        <p>{{joke}}</p>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                joke: "一句笑话",
+            },
+            methods: {
+                getJoke: function () {
+                    var that = this;
+                    axios({
+                        method: 'post',
+                        url: 'https://www.niaofeiyu.com/apis/auth/login',
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            'withCredentials': true,
+                            'Access-Control-Allow-Origin': 'http://localhost:9999/apis/auth/login',
+                            'Access-Control-Allow-Headers': "Authorization,Origin, X-Requested-With, Content-Type, Accept",
+                            'Access-Control-Allow-Methods': "GET,POST"
+                        },
+                        data: { "userName": "admin", "passWord": "super123456" },
+                        traditional: true,
+                        // transformRequest: [
+                        //     function(data) {
+                        //         let ret = ''
+                        //         for (let it in data) {
+                        //             ret +=
+                        //                 encodeURIComponent(it) +
+                        //                 '=' +
+                        //                 encodeURIComponent(data[it]) +
+                        //                 '&'
+                        //         }
+                        //         return ret
+                        //     }
+                        // ]
+                    }).then(res => res.data);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
